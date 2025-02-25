@@ -19,21 +19,10 @@ public class ControlePlayer : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 targetPos = new Vector2(
-        Mathf.Clamp(mousePos.x, -boundX + 0.5f, boundX - 0.5f),
-        Mathf.Clamp(mousePos.y, -boundY + 0.5f, -0.5f)
+            Mathf.Clamp(mousePos.x, -boundX + 0.5f, boundX - 0.5f),
+            Mathf.Clamp(mousePos.y, -boundY + 0.5f, -0.5f)
         );
 
         mallet.MovePosition(targetPos);  // Movimenta o jogador usando física
-
-        // Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // var pos = transform.position;
-
-        // // Aplica os limites definidos
-        // pos.x = Mathf.Clamp(mousePos.x, -boundX, boundX);
-        // pos.y = Mathf.Clamp(mousePos.y, -boundY, boundY);
-
-        // transform.position = pos;
-
-
     }
 }

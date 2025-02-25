@@ -5,11 +5,14 @@ using UnityEngine;
 public class PuckControl : MonoBehaviour
 {
     private Rigidbody2D puck;               // Define o corpo rigido 2D que representa a bola
+    public AudioSource source;
+    public float maxSpeed = 15f;   // Velocidade máxima do mallet
     
     // Start is called before the first frame update
     void Start()
     {
         puck = GetComponent<Rigidbody2D>(); // Inicializa o objeto bola
+        source = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D (Collision2D coll) {
@@ -17,8 +20,11 @@ public class PuckControl : MonoBehaviour
             Vector2 vel;
             vel.x = puck.velocity.x;
             vel.y = (puck.velocity.y / 2) + (coll.collider.attachedRigidbody.velocity.y / 3);
-            puck.velocity = vel;
+
+            // Limita a velocidade máxima
+            puck.velocity = Vector2.ClampMagnitude(vel, maxSpeed);
         }
+        source.Play();
     }
 
     // Reinicializa a posição e velocidade da bola
@@ -30,8 +36,5 @@ public class PuckControl : MonoBehaviour
     // Reinicializa o jogo
     public void RestartGame(){
         ResetBall();
-        // // Zerar a pontuação
-        // GameManager.PlayerScore1 = 0;
-        // GameManager.PlayerScore2 = 0;
     }
 }

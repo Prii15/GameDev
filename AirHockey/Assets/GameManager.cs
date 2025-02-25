@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     // Gerência da pontuação e fluxo do jogo
     void OnGUI () {
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + PlayerScore1);
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + PlayerScore2);
+        GUI.Label(new Rect(Screen.width / 2 - 200 - 12, 20, 200, 200), "" + PlayerScore1);
+        GUI.Label(new Rect(Screen.width / 2 - 200 - 12, 320, 200, 200), "" + PlayerScore2);
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART"))
+        if (GUI.Button(new Rect(Screen.width - 200, 35, 120, 53), "RESTART"))
         {
             PlayerScore1 = 0;
             PlayerScore2 = 0;
@@ -41,11 +41,19 @@ public class GameManager : MonoBehaviour
         }
         if (PlayerScore1 == 10)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
+            GUI.color = Color.black; // Define a cor preta para o fundo
+            GUI.Box(new Rect(Screen.width / 2 - 100, 200, 200, 100), ""); // Retângulo de fundo
+
+            GUI.color = Color.white; // Resetar cor para que o texto fique branco
+            GUI.Label(new Rect(Screen.width / 2 - 80, 225, 2000, 1000), "PLAYER RED WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         } else if (PlayerScore2 == 10)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER TWO WINS");
+            GUI.color = Color.black; // Define a cor preta para o fundo
+            GUI.Box(new Rect(Screen.width / 2 - 100, 200, 200, 100), ""); // Retângulo de fundo
+            GUI.color = Color.white; // Resetar cor para que o texto fique branco
+
+            GUI.Label(new Rect(Screen.width / 2 - 80, 225, 2000, 1000), "PLAYER BLUE WINS");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
     }
