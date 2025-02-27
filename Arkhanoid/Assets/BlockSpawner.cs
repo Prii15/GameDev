@@ -41,10 +41,6 @@ public class BlockSpawner : MonoBehaviour
                     // Define a cor com base na linha
                     int spriteIndex = row % blockSprites.Length; // Evita erro se houver mais linhas que sprites
                     sr.sprite = blockSprites[spriteIndex];
-
-                    // Configurar propriedades baseadas na linha
-                    blockScript.health = 1;
-                    blockScript.scoreValue = (row+1 - spriteIndex) * 100;
                 }
             }
         }

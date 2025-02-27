@@ -705,8 +705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 10, y: -30}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024318621
 MonoBehaviour:
@@ -922,6 +922,9 @@ MonoBehaviour:
   scoreText: {fileID: 1024318621}
   RestartButton: {fileID: 1614004892}
   MenuButton: {fileID: 19813499}
+  backgroundRenderer: {fileID: 1347899060}
+  victoryBackground: {fileID: -28891586, guid: 1917a7eb01d462447bedd24426efdd27, type: 3}
+  defeatBackground: {fileID: -2081762008, guid: 1917a7eb01d462447bedd24426efdd27, type: 3}
 --- !u!4 &1163197965
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,8 +1092,8 @@ Canvas:
   m_GameObject: {fileID: 1490502635}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 878569541}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1101,7 +1104,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1490502639
 RectTransform:

@@ -17,15 +17,8 @@ public class BallControl : MonoBehaviour
 
      // Determina o comportamento da bola nas colisões com os Players (raquetes)
     void OnCollisionEnter2D (Collision2D coll) {
-        if(coll.collider.CompareTag("Player")){
-            Vector2 vel;
-            vel.x = rb2d.velocity.x;
-            vel.y = (2*rb2d.velocity.y / 3) + (coll.collider.attachedRigidbody.velocity.y / 3);
-            rb2d.velocity = vel;
-        }
-        else if (coll.gameObject.tag == "Block"){
+        if (coll.gameObject.tag == "Block"){
             Block block = coll.gameObject.GetComponent<Block>();
-
             block.TakeDamage();
         }
     }

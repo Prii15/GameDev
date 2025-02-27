@@ -12,18 +12,22 @@ public class GameOverControl : MonoBehaviour{
 
     public Button RestartButton;
     public Button MenuButton; 
-
+    public SpriteRenderer backgroundRenderer; // Arraste o GameObject do fundo aqui
+    public Sprite victoryBackground; // Fundo de vitória
+    public Sprite defeatBackground; // Fundo de derrota
     void Start()
     {
-        scoreText.text = "Final Score: " + GameManager.totalScore;
+        scoreText.text = "Final Score: " + GameManager.score;
 
         if (GameManager.win)
         {
             gameOverText.text = "Vitória! :) ";
+            backgroundRenderer.sprite = victoryBackground; // Muda o fundo para vitória
         }
         else
         {
             gameOverText.text = "Derrota! :( ";
+            backgroundRenderer.sprite = defeatBackground; // Muda o fundo para derrota
         }
 
         RestartButton.onClick.AddListener(RestartGame);
@@ -33,6 +37,8 @@ public class GameOverControl : MonoBehaviour{
     // Reinicia a cena atual
     public void RestartGame()
     {
+        GameManager.score = 0;
+        GameManager.life = 3;
         SceneManager.LoadScene("Fase1");
     }
 

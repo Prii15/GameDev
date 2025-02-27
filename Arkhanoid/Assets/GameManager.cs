@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TMP_Text scoreText;
+    public TMP_Text livesText;
     public static int score = 0; // Pontuação do jogador
     public static int life = 3; // Número de vidas do jogador
-    public static int totalScore = 0; //Pontuação total do jogador
     public static bool win = true;
 
-    public GUISkin layout; // Fonte do placar
     private static BallControl ball;
 
     void Start()
@@ -44,27 +45,14 @@ public class GameManager : MonoBehaviour
         
         if(gos.Length == 0){
             if (scene.name == "Fase1"){
-                totalScore += score;
                 SceneManager.LoadScene("Fase2");
             } else if(scene.name == "Fase2"){
                 SceneManager.LoadScene("GameOver");
             }
         }
-    }
 
+        scoreText.text = "Score: \n" + score;
+        livesText.text = "Lives: \n" + life;
 
-    // Gerencia a UI do jogo
-    void OnGUI()
-    {
-        GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width - 200, 20, 100, 100), "Score: " + score);
-        GUI.Label(new Rect(Screen.width - 200, 50, 100, 100), "Lives: " + life);
-
-        if (GUI.Button(new Rect(Screen.width -210, 100, 120, 53), "RESTART"))
-        {
-            score = 0;
-            life = 3;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 }
