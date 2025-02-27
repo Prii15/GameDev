@@ -4,41 +4,56 @@ using UnityEngine;
 
 public class RedControl : MonoBehaviour
 {
-    public float boundY = 7.9f;            // Define os limites em Y
-    public float boundX = 4.9f;            // Define os limites em X
-    private Rigidbody2D mallet;            // Corpo rígido 2D do mallet
-    public float moveSpeed = 5f;           // Velocidade inicial
-    public float acceleration = 2f;        // Aceleração do movimento
-    public float maxSpeed = 8f;            // Velocidade máxima
+    public float MaxSpeed = 15.0f;
+    public float Acceleration = 2.0f;
+    public Transform Puck; // A "bola" do jogo
+    public Transform Target; // O gol do player
 
-    // Start é chamado antes do primeiro frame
+    private Rigidbody2D rbPuck;
+
     void Start()
     {
-        mallet = GetComponent<Rigidbody2D>();  // Inicializa o mallet
+        Debug.Log("Bot is ready to play!");
+        rbPuck = Puck.GetComponent<Rigidbody2D>();
     }
 
-    // Update é chamado uma vez por frame
-    void FixedUpdate()
+    void Update()
     {
-        GameObject puck = GameObject.FindGameObjectWithTag("Puck"); // Encontra o puck
+        Vector2 puckPosition = Puck.position;
+        Vector2 puckVelocity = rbPuck.velocity;
+        Vector2 puckPredictedPosition = puckPosition + puckVelocity * Time.deltaTime;
 
-        if (puck != null && puck.transform.position.y > 0)  
+        // Se a bola estiver na metade superior do campo, o bot se movimenta
+        if (puckPosition.y > 0)
         {
-            Vector2 puckPos = puck.transform.position;  // Posição do puck
+            Vector2 hitDirection = (Target.position - Puck.position).normalized;
+            Vector2 interceptPosition = puckPredictedPosition + hitDirection * 0.5f;
 
-            // Calcula a direção para o puck
-            Vector2 direction = (puckPos - mallet.position).normalized;
-
-            // Aplica aceleração até o limite de velocidade máxima
-            moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.fixedDeltaTime, maxSpeed);
-
-            // Define a nova velocidade do mallet (movendo suavemente)
-            mallet.velocity = direction * moveSpeed;
+            transform.position = Vector2.MoveTowards(transform.position, interceptPosition, MaxSpeed * Time.deltaTime);
         }
         else
         {
-            // Para o movimento caso o puck não esteja na área superior
-            mallet.velocity = Vector2.zero;
+            // Se o bot estiver abaixo da zona de idle, ele sobe
+            if (transform.position.y < 4)
+            {
+                Vector2 idlePosition = new Vector2(transform.position.x, 4);
+                transform.position = Vector2.MoveTowards(transform.position, idlePosition, MaxSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Puck"))
+        {
+            Debug.Log("Bot hit the puck!");
+
+            Vector2 hitDirection = (Target.position - Puck.position).normalized;
+            float hitForce = 10.0f;
+
+            Vector2 adjustedVelocity = (Vector2)Vector3.Project((Vector3)rbPuck.velocity, (Vector3)hitDirection) + hitDirection * hitForce;
+
+            rbPuck.velocity = adjustedVelocity;
         }
     }
 }
