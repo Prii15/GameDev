@@ -1324,11 +1324,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022393328241c644b4d156551370520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundY: 7.9
-  boundX: 4.9
-  moveSpeed: 5
-  acceleration: 0.1
-  maxSpeed: 8
+  MaxSpeed: 15
+  Acceleration: 2
+  Puck: {fileID: 1597133152}
+  Target: {fileID: 1075914857}
 --- !u!50 &1965779860
 Rigidbody2D:
   serializedVersion: 4
