@@ -28,11 +28,9 @@ public class GameManager : MonoBehaviour
         
         if (life <= 0)
         {
-            win = false;
-            SceneManager.LoadScene("GameOver");
+            GameOver();
         }
     }
-
     
 
     void Update()
@@ -40,8 +38,14 @@ public class GameManager : MonoBehaviour
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
         
         if(gos.Length == 0){
+            win = false;
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    public static void GameOver(){
+        win = false;
+        SceneManager.LoadScene("GameOver");
     }
 
     void LateUpdate(){

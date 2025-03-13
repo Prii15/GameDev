@@ -12,7 +12,7 @@ public class invader : MonoBehaviour
     private static float baseWaitTime = 1.0f; // Tempo inicial entre movimentos
     private float waitTime;
     private int moveSteps = 0;
-    private int maxSteps = 4;
+    private int maxSteps = 3;
 
     [Header("Shooting Settings")]
     [SerializeField] private GameObject missilePrefab;
@@ -138,6 +138,12 @@ void UpdateSpeed()
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BottomWall"))
+        {
+            GameManager.GameOver(); 
+        }
+    }
 
 }
