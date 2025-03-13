@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update () {
 
-        var vel = rb2d.velocity;                // Acessa a velocidade da raquete
+        var vel = rb2d.linearVelocity;                // Acessa a velocidade da raquete
         if (Input.GetKey(moveLeft)) {             // Velocidade da Raquete para ir para esquerda
             vel.x = -speed;
         }
@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
         else {
             vel.x = 0;                          // Velociade para manter a raquete parada
         }
-        rb2d.velocity = vel;                    // Atualizada a velocidade da raquete
+        rb2d.linearVelocity = vel;                    // Atualizada a velocidade da raquete
 
         var pos = transform.position;           // Acessa a Posição da raquete
         if (pos.x > boundX) {                  
