@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   boundX: 8
-  missilePrefab: {fileID: 4823221955896983418, guid: 393024683b4cdb947be697e8084fa9fd, type: 3}
+  missilePrefab: {fileID: 6831418711939566847, guid: 68de87f3bad756a499d59420bfa7161b, type: 3}
   fireRate: 0.5
   nextFire: 0
 --- !u!61 &2105961850
@@ -1296,7 +1296,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.004557222, y: -0.05696249}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1306,7 +1306,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.02, y: 0.8}
+  m_Size: {x: 0.719238, y: 0.54025173}
   m_EdgeRadius: 0
 --- !u!50 &2105961851
 Rigidbody2D:

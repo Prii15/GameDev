@@ -3,8 +3,8 @@ using UnityEngine;
 public class bigInvaderSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject bigInvaderPrefab;
-    private float minSpawnTime = 30f;
-    private float maxSpawnTime = 50f;
+    private float minSpawnTime = 5f;
+    private float maxSpawnTime = 10f;
     private float spawnTimer;
 
     void Start()

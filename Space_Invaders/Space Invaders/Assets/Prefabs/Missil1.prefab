@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3468417073241625276}
   - component: {fileID: 4831142376225266252}
   - component: {fileID: 2948164690744211961}
-  - component: {fileID: 1544367965422122656}
+  - component: {fileID: -1558988390235247634}
   m_Layer: 0
-  m_Name: InvaderMissile
-  m_TagString: Untagged
+  m_Name: Missil1
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3344602, y: 0.51468855}
   m_EdgeRadius: 0
---- !u!114 &1544367965422122656
+--- !u!114 &-1558988390235247634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6831418711939566847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ed4513bf09d40d4f8189a0ab5077814, type: 3}
+  m_Script: {fileID: 11500000, guid: 62843f9b2dc1e0d44a8ffd514633f380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
