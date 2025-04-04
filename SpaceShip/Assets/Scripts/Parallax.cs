@@ -39,7 +39,7 @@ public class Parallax : MonoBehaviour
     // Reduz a velocidade do parallax pela metade
     public void SlowParallax()
     {
-        currentParallaxSpeed = parallaxEffect / 2;  // Reduz pela metade
+        currentParallaxSpeed = parallaxEffect / 4;  // Reduz pela metade
         Debug.Log($"{gameObject.name} velocidade atual do parallax: {currentParallaxSpeed}");
     }
 
